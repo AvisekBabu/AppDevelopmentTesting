@@ -8,10 +8,10 @@
 
     android:orientation="vertical"
 
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="16dp"
     android:paddingLeft="16dp"
+    android:paddingTop="16dp"
     android:paddingRight="16dp"
+    android:paddingBottom="@dimen/activity_vertical_margin"
 
     tools:context=".MainActivity">
 
@@ -20,25 +20,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/first_text"
-        android:textSize="30sp"
         android:textColor="@color/black"
+        android:textSize="30sp"
 
         />
 
     <Button
-        android:id="@+id/pushMeButton"
+        android:id="@+id/dialNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/click_me"
+        android:text="Dial Number"
 
         />
 
     <Button
-        android:id="@+id/pushMeButton2"
+        android:id="@+id/toast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/click_me2"
+        android:text="Toast"
 
         />
+
+    <Button
+        android:id="@+id/showLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Location"
+
+        />
+
+    <Button
+        android:id="@+id/openWebPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open Web Page "
+
+        />
+
+    <Button
+        android:id="@+id/viewIntent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Intent "
+
+        />
+
+    <Button
+        android:id="@+id/letsGetPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lets Get Pro.. "
+
+        />
+
+
 
 </LinearLayout>

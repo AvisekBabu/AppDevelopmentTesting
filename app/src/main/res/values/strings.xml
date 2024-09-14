@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">AvisekApp24</string>
     <string name="activity_main">MainActivity</string>
-    <string name="first_text">Hello Animesh</string>
+    <string name="first_text">Hello Piyu</string>
     <string name="click_me">Push me</string>
     <string name="click_me2">Push me 2</string>
+    <string name="other_activity_first_text">Hello from other activity</string>
 </resources>

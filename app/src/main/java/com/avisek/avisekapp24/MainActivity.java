@@ -1,5 +1,7 @@
 package com.avisek.avisekapp24;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView textView;
-    Button push_me,push_me2;
+    Button dialNumber,toast,showLocation,openWebPage,viewIntent,letsGetPro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,32 +25,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * Declaring "push_me" instance for event listener
          * Both of this handle declared in activity_main.xml
          */
-        textView = (TextView) findViewById(R.id.textView);
-//        final TextView = (TextView) findViewById(R.id.textView);
 
-        push_me = (Button) findViewById(R.id.pushMeButton);
-        push_me2 = (Button) findViewById(R.id.pushMeButton2);
-
-//        push_me.setOnClickListener(this);
-//        push_me2.setOnClickListener(this);
-
+        // TextView textView and Button push_me set as global
+//        final TextView textView = (TextView) findViewById(R.id.textView);
 //        Button push_me = (Button) findViewById(R.id.pushMeButton);
 //        Button push_me2 = (Button) findViewById(R.id.pushMeButton2);
+        textView = (TextView) findViewById(R.id.textView);
+        dialNumber = (Button) findViewById(R.id.dialNumber);
+        toast = (Button) findViewById(R.id.toast);
+        showLocation = (Button) findViewById(R.id.showLocation);
+        openWebPage = (Button) findViewById(R.id.openWebPage);
+        viewIntent = (Button) findViewById(R.id.viewIntent);
+        letsGetPro = (Button) findViewById(R.id.letsGetPro);
 
+        dialNumber.setOnClickListener(this);
+        toast.setOnClickListener(this);
+        openWebPage.setOnClickListener(this);
+        viewIntent.setOnClickListener(this);
+        letsGetPro.setOnClickListener(this);
+
+        // Event listeners
 //        push_me.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View v) {
+//            public void onClick(View view) {
 //                Log.d("tag","Somebody clicked on Button 1");
 //                textView.setText("Somebody clicked on Button 1");
 //            }
 //        });
 //        push_me2.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View v) {
+//            public void onClick(View view) {
 //                Log.d("tag","Somebody clicked on Button 2");
 //                textView.setText("Somebody clicked on Button 2");
 //            }
 //        });
+
+
 
         /* Log is a class which contains multiple errors
          * With "tag" logcat relevant logs can be visible
@@ -90,34 +102,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("tag","inDestroy");
     }
 
-
+    // Better approach..
+    // Whatever button is configured, control will come here
     @Override
     public void onClick(View v) {
-        int buttonId = v.getId();
-        if(buttonId == R.id.pushMeButton)
-        {
-            Log.d("tag","Somebody clicked on Button 1");
-            textView.setText("Somebody clicked on Button 1");
-        }
-        else if(buttonId == R.id.pushMeButton2)
-        {
-            Log.d("tag","Somebody clicked on Button 2");
-            textView.setText("Somebody clicked on Button 2");
-        }
 
-//        switch (v.getId())
-//        {
-//            case R.id.pushMeButton:
-//                Log.d("tag","Somebody clicked on Button 1");
-//                textView.setText("Somebody clicked on Button 1");
-//                break;
-//
-//            case R.id.pushMeButton2:
-//                Log.d("tag","Somebody clicked on Button 2");
-//                textView.setText("Somebody clicked on Button 2");
-//                break;
-//        }
+        if(v.getId() == R.id.dialNumber) {
+            // this will navigating to dialler app component "ACTION_DIAL"
+            Intent intent1 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:9674303557"));
+            startActivity(intent1);
+
+        }
+        else if(v.getId() == R.id.toast) {
+            // intent activity help you to jump another activity
+            Intent intent = new Intent(MainActivity.this, otherActivity.class);
+            startActivity(intent);
+
+        }
+        else if(v.getId() == R.id.showLocation) {
+            // "ACTION_VIEW" will be overridden by Google map, geo: need to mentioned
+            Intent intent2 = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:23.7831911,88.2641384?q=location+name")); // Add query parameter for label
+            startActivity(intent2);
+
+        }
+        else if(v.getId() == R.id.openWebPage) {
+            // "ACTION_VIEW" will be overridden by any existing browser, https: need to mentioned
+            Intent intent3 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.innominds.com"));
+            startActivity(intent3);
+
+        }
+        else if(v.getId() == R.id.viewIntent) {
+            // All apps who using ACTION_VIEW, will ask for select
+            Intent intent4 = new Intent(Intent.ACTION_VIEW);
+            startActivity(intent4);
+
+        }
+        else if(v.getId() == R.id.letsGetPro) {
+            // this intent reaching across the boundary of this app
+            Intent intent5 = new Intent("com.avisek.avisekapp24.otherActivity");
+            intent5.putExtra("KEY", "Data landed here in otherActivity");
+            startActivity(intent5);
+
+        }
     }
+
+
+
 
 
 }
