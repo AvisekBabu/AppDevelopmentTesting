@@ -139,14 +139,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         else if(v.getId() == R.id.letsGetPro) {
-            // this intent reaching across the boundary of this app
+            // this intent(explicit intent) reaching across the boundary of this app
             Intent intent5 = new Intent("com.avisek.avisekapp24.otherActivity");
-            intent5.putExtra("KEY", "Data landed here in otherActivity");
+//            intent5.putExtra("KEY", "Data landed here in otherActivity");
             startActivity(intent5);
 
         }
     }
-
 
 
 
